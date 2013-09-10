@@ -11,3 +11,11 @@ Just run install.py in the root to install to home directory, note it's still _i
 
 Thanks to the makers of the color schemes included here! They're duplicated so I know I'm getting the exact version but all are available on vim.org
 
+TODO
+----
+
+- .bashrc
+- .bash_profile
+- .gitconfig
+- Windows???
+
