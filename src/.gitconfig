@@ -5,3 +5,5 @@
 	name = Jay Lynch
 [core]
 	editor = vim
+[credential]
+	helper = cache --timeout=21600
