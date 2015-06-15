@@ -1,0 +1,13 @@
+#!/bin/bash
+# This hook is sourced after every virtualenv is activated.
+cd () {
+    if (( $# == 0 ))
+    then
+        cdproject
+    else
+        builtin cd "$@"
+    fi
+}
+
+cd
+
