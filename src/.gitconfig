@@ -6,4 +6,22 @@
 [core]
 	editor = vim
 [credential]
-	helper = cache --timeout=21600
+  helper = cache --timeout=21600
+
+[diff]
+  tool = bcomp
+[difftool]
+  prompt = false
+[difftool "bcomp"]
+  trustExitCode = true
+  cmd = "bcomp" "$LOCAL" "$REMOTE"
+[merge]
+  tool = bcomp
+[mergetool]
+  prompt = false
+[mergetool "bcomp"]
+  trustExitCode = true
+  cmd = "bcomp" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+[push]
+  default = simple
+
