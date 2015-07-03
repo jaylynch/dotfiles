@@ -1,5 +1,7 @@
 VENV_WRAPPER=/usr/local/bin/virtualenvwrapper.sh 
 
+source ~/.bash/git-completion.bash
+
 if [ -f $VENV_WRAPPER ]; then
   export WORKON_HOME=$HOME/.venvs
   export PROJECT_HOME=$HOME/proj
