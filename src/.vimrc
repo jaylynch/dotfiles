@@ -50,3 +50,6 @@ set laststatus=2
 :set guioptions-=M
 :set guioptions-=T
 
+" Set syntax highlighting for nginx config files
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
+
