@@ -1,7 +1,7 @@
 VENV_WRAPPER=/usr/local/bin/virtualenvwrapper.sh 
 
 # If running in Windows git bash
-if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+if [ "$(uname -s | cut -c 1-10)" == "MINGW32_NT" ]; then
   VENV_WRAPPER=/c/Python/Scripts/virtualenvwrapper.sh
 fi
 
