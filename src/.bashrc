@@ -41,3 +41,19 @@ if [ -f $VENV_WRAPPER ]; then
 
 fi
 
+function srv()
+{
+  DIRNAME=${PWD##*/}
+  DJANGO_SCRIPT="manage.py"
+
+  if [ -f "${DIRNAME}/$DJANGO_SCRIPT" ]; then
+    COMMAND="${DIRNAME}/${DJANGO_SCRIPT} runserver 0.0.0.0:8000"
+  elif [ -f $DJANGO_SCRIPT ]; then
+    COMMAND="${DJANGO_SCRIPT} runserver 0.0.0.0:8000"
+  else
+    COMMAND="-m SimpleHTTPServer"
+  fi
+
+  python $COMMAND
+}
+
