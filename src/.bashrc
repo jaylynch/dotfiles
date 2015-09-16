@@ -1,7 +1,7 @@
 VENV_WRAPPER=/usr/local/bin/virtualenvwrapper.sh 
 
 # If running in Windows git bash
-if [ "$(uname -s | cut -c 1-10)" == "MINGW32_NT" ]; then
+if [ "$(uname -s | cut -c 1-10)" '==' "MINGW32_NT" ]; then
   VENV_WRAPPER=/c/Python/Scripts/virtualenvwrapper.sh
 fi
 
@@ -26,14 +26,14 @@ if [ -f $VENV_WRAPPER ]; then
 
   function prompt()
   {
-    if [ "$PWD" == "$HOME" ]; then
+    if [ "$PWD" '==' "$HOME" ]; then
       unset MYOLDPWD
-      if [ -n "$(type -t deactivate)" ] && [ "$(type -t deactivate)" = function ]; then
+      if [ "$(declare -f deactivate > /dev/null; echo $?)" '==' 0 ]; then
         deactivate
       fi
     fi
 
-    if [ "$PWD" != "$MYOLDPWD" ]; then
+    if [ "$PWD" '!=' "$MYOLDPWD" ]; then
       MYOLDPWD="$PWD"
       test -e .venv && workon `cat .venv`
     fi
@@ -47,13 +47,13 @@ function srv()
   DJANGO_SCRIPT="manage.py"
 
   if [ -f "${DIRNAME}/$DJANGO_SCRIPT" ]; then
-    COMMAND="${DIRNAME}/${DJANGO_SCRIPT} runserver 0.0.0.0:8000"
+    COMMAND="python ${DIRNAME}/${DJANGO_SCRIPT} runserver 0.0.0.0:8000"
   elif [ -f $DJANGO_SCRIPT ]; then
-    COMMAND="${DJANGO_SCRIPT} runserver 0.0.0.0:8000"
+    COMMAND="python ${DJANGO_SCRIPT} runserver 0.0.0.0:8000"
   else
-    COMMAND="-m SimpleHTTPServer"
+    COMMAND="python -m SimpleHTTPServer"
   fi
 
-  python $COMMAND
+  eval $COMMAND
 }
 
