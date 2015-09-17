@@ -13,6 +13,8 @@ if [ -f $VENV_WRAPPER ]; then
   export VIRTUALENVWRAPPER_HOOK_DIR=$HOME/.venv_hooks
   source $VENV_WRAPPER
 
+  alias wo='workon'
+
   # Automatically load if ".venv" file found
   # With thanks to: https://justin.abrah.ms/dotfiles/zsh.html#sec-2-7
   # Support for bash
