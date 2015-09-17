@@ -14,6 +14,7 @@ if [ -f $VENV_WRAPPER ]; then
   source $VENV_WRAPPER
 
   alias wo='workon'
+  complete -o default -o nospace -F _virtualenvs wo
 
   # Automatically load if ".venv" file found
   # With thanks to: https://justin.abrah.ms/dotfiles/zsh.html#sec-2-7
