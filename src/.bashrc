@@ -51,6 +51,8 @@ function srv()
 
   if [ -f "${DIRNAME}/$DJANGO_SCRIPT" ]; then
     COMMAND="python ${DIRNAME}/${DJANGO_SCRIPT} runserver 0.0.0.0:8000"
+  elif [ -f "django/$DJANGO_SCRIPT" ]; then
+    COMMAND="python ${DIRNAME}/${DJANGO_SCRIPT} runserver 0.0.0.0:8000"
   elif [ -f $DJANGO_SCRIPT ]; then
     COMMAND="python ${DJANGO_SCRIPT} runserver 0.0.0.0:8000"
   else
