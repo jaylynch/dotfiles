@@ -3,7 +3,7 @@ import os
 
 cdir = os.path.dirname(os.path.abspath(__file__))
 sourcedir = os.path.join(cdir, 'src')
-targetdir = '~'
+targetdir = os.path.expanduser('~')
 
 for dotfile in os.listdir(sourcedir):
   source = os.path.join(sourcedir, dotfile)
