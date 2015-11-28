@@ -18,7 +18,7 @@ for dotfile in os.listdir(sourcedir):
 	    filename = os.path.realpath(target)
             was_link = " (existing symlink to %s)" % filename
 
-        print "WARNING: %s exists! Skipping.%s" % (target, was_link)
+        print "\033[93mWARNING\033[0m: %s exists! Skipping.%s" % (target, was_link)
         continue
 
     ##TODO## :: Look at why os.symlink doesn't like relative paths
