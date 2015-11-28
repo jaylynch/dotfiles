@@ -53,3 +53,10 @@ set laststatus=2
 " Set syntax highlighting for nginx config files
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
+" Highlight column 78
+set cc=79
+
+" Highlight lines running longer than 80 chars
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#390909
+match OverLength /\%80v.\+/
+
