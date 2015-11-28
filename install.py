@@ -10,7 +10,15 @@ for dotfile in os.listdir(sourcedir):
     target = os.path.join(targetdir, dotfile)
 
     if os.path.exists(target):
-        print "WARNING: %s exists! Skipping." % (target)
+        if os.path.realpath(target) == source:
+            continue
+
+        was_link = ""
+        if os.path.islink(target):
+	    filename = os.path.realpath(target)
+            was_link = " (existing symlink to %s)" % filename
+
+        print "WARNING: %s exists! Skipping.%s" % (target, was_link)
         continue
 
     ##TODO## :: Look at why os.symlink doesn't like relative paths
