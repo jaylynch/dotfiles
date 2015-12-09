@@ -1,3 +1,7 @@
+if [ -f ~/ORIG.bashrc ]; then
+  . ~/ORIG.bashrc
+fi
+
 VENV_WRAPPER=/usr/local/bin/virtualenvwrapper.sh 
 
 # If running in Windows git bash
