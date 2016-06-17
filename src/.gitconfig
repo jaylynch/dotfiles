@@ -10,6 +10,7 @@
 
 [diff]
   tool = bcomp
+  compactionHeuristic = true
 [difftool]
   prompt = false
 [difftool "bcomp"]
