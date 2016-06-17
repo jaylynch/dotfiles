@@ -88,3 +88,7 @@ if [ -f $HOME/.rbenv ]; then
   export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 fi
 
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
