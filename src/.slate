@@ -27,6 +27,11 @@ bind esc:cmd      hint QWEASDZXCRFV123
 # Push Bindings
 bind e:ctrl;cmd  push right bar-resize:screenSizeX/2
 bind q:ctrl;cmd   push left  bar-resize:screenSizeX/2
+
+bind q:shift,ctrl,cmd push left bar-resize:screenSizeX/3
+bind w:shift,ctrl,cmd move screenOriginX+screenSizeX/3;0 screenSizeX/3;screenSizeY
+bind e:shift,ctrl,cmd push right bar-resize:screenSizeX/3
+
 bind 1:shift,ctrl,cmd,alt corner top-left resize:screenSizeX/2;screenSizeY/2
 bind 2:shift,ctrl,cmd,alt corner top-right resize:screenSizeX/2;screenSizeY/2
 bind 3:shift,ctrl,cmd,alt corner bottom-left resize:screenSizeX/2;screenSizeY/2
