@@ -11,6 +11,8 @@ fi
 
 source ~/.bash/git-completion.bash
 
+bashcompinit 2>&1 > /dev/null
+
 if [ -f $VENV_WRAPPER ]; then
   export WORKON_HOME=$HOME/.venvs
   export PROJECT_HOME=$HOME/proj
