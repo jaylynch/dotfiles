@@ -11,6 +11,7 @@ fi
 
 source ~/.bash/git-completion.bash
 
+autoload bashcompinit
 bashcompinit 2>&1 > /dev/null
 
 if [ -f $VENV_WRAPPER ]; then
