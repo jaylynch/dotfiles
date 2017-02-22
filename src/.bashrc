@@ -2,17 +2,21 @@ if [ -f ~/ORIG.bashrc ]; then
   . ~/ORIG.bashrc
 fi
 
-VENV_WRAPPER=/usr/local/bin/virtualenvwrapper.sh 
+VENV_WRAPPER=/usr/local/bin/virtualenvwrapper.sh
 
 # If running in Windows git bash
 if [ "$(uname -s | cut -c 1-10)" '==' "MINGW32_NT" ]; then
   VENV_WRAPPER=/c/Python/Scripts/virtualenvwrapper.sh
 fi
 
-source ~/.bash/git-completion.bash
-
 autoload bashcompinit
 bashcompinit 2>&1 > /dev/null
+
+if [ -n "$ZSH_VERSION" ]; then
+  source ~/.zsh/git-completion.zsh
+elif [ -n "$BASH_VERSION" ]; then
+  source ~/.bash/git-completion.bash
+fi
 
 if [ -f $VENV_WRAPPER ]; then
   export WORKON_HOME=$HOME/.venvs
@@ -28,9 +32,9 @@ if [ -f $VENV_WRAPPER ]; then
   # Support for bash
   PROMPT_COMMAND='prompt'
 
-  # Mirrored support for zsh. See: https://superuser.com/questions/735660/whats-the-zsh-equivalent-of-bashs-prompt-command/735969#735969 
-  precmd() 
-  { 
+  # Mirrored support for zsh. See: https://superuser.com/questions/735660/whats-the-zsh-equivalent-of-bashs-prompt-command/735969#735969
+  precmd()
+  {
     eval "$PROMPT_COMMAND"
   }
 
@@ -96,4 +100,3 @@ if [ hash brew 2>/dev/null; then
     . $(brew --prefix)/etc/bash_completion
   fi
 fi
-
