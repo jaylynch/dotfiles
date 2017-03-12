@@ -10,7 +10,7 @@ if [ "$(uname -s | cut -c 1-10)" '==' "MINGW32_NT" ]; then
 fi
 
 autoload bashcompinit
-bashcompinit 2>&1 > /dev/null
+bashcompinit 2&>1 > /dev/null
 
 if [ -n "$ZSH_VERSION" ]; then
   source ~/.bash/git-completion.zsh
