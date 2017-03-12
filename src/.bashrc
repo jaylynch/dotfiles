@@ -100,3 +100,8 @@ if [ hash brew 2>/dev/null; then
     . $(brew --prefix)/etc/bash_completion
   fi
 fi
+
+# Add Homebrew Go install to PATH
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=$HOME/proj/go
+export PATH=$PATH:$(go env GOPATH)/bin
