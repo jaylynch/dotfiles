@@ -74,6 +74,7 @@ function srv()
 # Aliases
 alias bcomp='bcompare'
 alias shipit='git push --tags origin master && git push --tags prod master'
+alias stageit='git push --tags origin dev && git push --tags staging dev'
 
 # enable color support of ls and also add handy aliases
 # (Thanks Ubuntu!)
