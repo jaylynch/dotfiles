@@ -9,7 +9,9 @@ if [ "$(uname -s | cut -c 1-10)" '==' "MINGW32_NT" ]; then
   VENV_WRAPPER=/c/Python/Scripts/virtualenvwrapper.sh
 fi
 
-autoload bashcompinit
+autoload -U compinit
+compinit 2>&1 > /dev/null
+autoload -U bashcompinit
 bashcompinit 2>&1 > /dev/null
 
 if [ -n "$BASH_VERSION" ]; then
