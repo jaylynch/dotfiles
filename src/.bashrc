@@ -119,3 +119,7 @@ fi
 if command -v yarn 2>&1 >/dev/null; then
   export PATH=$PATH:$(yarn global bin)
 fi
+
+# added by travis gem
+[ -f /Users/jay/.travis/travis.sh ] && source /Users/jay/.travis/travis.sh
+
