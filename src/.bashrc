@@ -9,10 +9,12 @@ if [ "$(uname -s | cut -c 1-10)" '==' "MINGW32_NT" ]; then
   VENV_WRAPPER=/c/Python/Scripts/virtualenvwrapper.sh
 fi
 
-autoload -U compinit
-compinit 2>&1 > /dev/null
-autoload -U bashcompinit
-bashcompinit 2>&1 > /dev/null
+if [ -n "$ZSH_VERSION" ]; then
+  autoload -U compinit
+  compinit 2>&1 > /dev/null
+  autoload -U bashcompinit
+  bashcompinit 2>&1 > /dev/null
+fi
 
 if [ -n "$BASH_VERSION" ]; then
   source ~/.bash/git-completion.bash
@@ -96,7 +98,7 @@ if [ -f $HOME/.rbenv ]; then
   export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 fi
 
-if [ hash brew 2>/dev/null; then
+if command -v brew 2>&1 >/dev/null; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
@@ -109,7 +111,11 @@ if [ hash brew 2>/dev/null; then
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
 fi
 
-if [ hash go 2>/dev/null; then
+if command -v go 2>&1 >/dev/null; then
   export GOPATH=$HOME/proj/go
   export PATH=$PATH:$(go env GOPATH)/bin
+fi
+
+if command -v yarn 2>&1 >/dev/null; then
+  export PATH=$PATH:$(yarn global bin)
 fi
