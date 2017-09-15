@@ -98,9 +98,16 @@ if [ hash brew 2>/dev/null; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
+
+  # Load NVM if possible
+  export NVM_DIR=~/.nvm
+  . $(brew --prefix nvm)/nvm.sh
+
+  # Add Homebrew Go install to PATH
+  export PATH=$PATH:/usr/local/opt/go/libexec/bin
 fi
 
-# Add Homebrew Go install to PATH
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=$HOME/proj/go
-export PATH=$PATH:$(go env GOPATH)/bin
+if [ hash go 2>/dev/null; then
+  export GOPATH=$HOME/proj/go
+  export PATH=$PATH:$(go env GOPATH)/bin
+fi
