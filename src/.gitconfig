@@ -5,6 +5,7 @@
 	name = Jay Lynch
 [core]
 	editor = vim
+	excludesfile = /Users/jay/.gitignore_global
 [credential]
   helper = cache --timeout=21600
 
