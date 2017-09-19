@@ -18,6 +18,10 @@ fi
 
 if [ -n "$BASH_VERSION" ]; then
   source ~/.bash/git-completion.bash
+
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 if [ -f $VENV_WRAPPER ]; then
@@ -99,10 +103,6 @@ if [ -f $HOME/.rbenv ]; then
 fi
 
 if command -v brew 2>&1 >/dev/null; then
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
-
   # Load NVM if possible
   export NVM_DIR=~/.nvm
   . $(brew --prefix nvm)/nvm.sh
