@@ -19,6 +19,14 @@ fi
 if [ -n "$BASH_VERSION" ]; then
   source ~/.bash/git-completion.bash
 
+  export HISTCONTROL=erasedups
+  export HISTFILE=~/.bash_eternal_history
+  export HISTFILESIZE=
+  export HISTSIZE=
+  export HISTTIMEFORMAT="[%F %T] "
+
+  PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
