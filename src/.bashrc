@@ -26,10 +26,6 @@ if [ -n "$BASH_VERSION" ]; then
   export HISTTIMEFORMAT="[%F %T] "
 
   PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
 fi
 
 if [ -f $VENV_WRAPPER ]; then
@@ -117,6 +113,11 @@ if command -v brew 2>&1 >/dev/null; then
 
   # Add Homebrew Go install to PATH
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 if command -v go 2>&1 >/dev/null; then
