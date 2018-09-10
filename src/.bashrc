@@ -129,6 +129,10 @@ if command -v yarn 2>&1 >/dev/null; then
   export PATH=$PATH:$(yarn global bin)
 fi
 
+if [ -d $HOME/.yarn ]; then
+  export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+fi
+
 # added by travis gem
 [ -f /Users/jay/.travis/travis.sh ] && source /Users/jay/.travis/travis.sh
 
