@@ -64,6 +64,21 @@ if [ -n "$BASH_VERSION" ]; then
   PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 fi
 
+if command -v nvm 2>&1 >/dev/null; then
+  function check_nvm()
+  {
+    if [ -f .nvmrc ]; then
+      USING_NODE_VERSION=$(nvm version)
+      DIR_NODE_VERSION=$(nvm version `cat .nvmrc`)
+      if [ "${USING_NODE_VERSION}" != "${DIR_NODE_VERSION}" ]; then
+        nvm use
+      fi
+    fi
+  }
+
+  PROMPT_COMMAND="check_nvm; $PROMPT_COMMAND"
+fi
+
 function srv()
 {
   DIRNAME=${PWD##*/}
