@@ -16,18 +16,6 @@ if [ -n "$ZSH_VERSION" ]; then
   bashcompinit 2>&1 > /dev/null
 fi
 
-if [ -n "$BASH_VERSION" ]; then
-  source ~/.bash/git-completion.bash
-
-  export HISTCONTROL=erasedups
-  export HISTFILE=~/.bash_eternal_history
-  export HISTFILESIZE=
-  export HISTSIZE=
-  export HISTTIMEFORMAT="[%F %T] "
-
-  PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-fi
-
 if [ -f $VENV_WRAPPER ]; then
   export WORKON_HOME=$HOME/.venvs
   export PROJECT_HOME=$HOME/proj
@@ -62,7 +50,18 @@ if [ -f $VENV_WRAPPER ]; then
       test -e .venv && workon `cat .venv`
     fi
   }
+fi
 
+if [ -n "$BASH_VERSION" ]; then
+  source ~/.bash/git-completion.bash
+
+  export HISTCONTROL=erasedups
+  export HISTFILE=~/.bash_eternal_history
+  export HISTFILESIZE=
+  export HISTSIZE=
+  export HISTTIMEFORMAT="[%F %T] "
+
+  PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 fi
 
 function srv()
