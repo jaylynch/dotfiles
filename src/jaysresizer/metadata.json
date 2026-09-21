@@ -1,0 +1,20 @@
+{
+    "KPackageStructure": "KWin/Script",
+    "KPlugin": {
+        "Name": "Jay's Resizer",
+        "Description": "Set up my default window resizing shortcut keys for KDE Plasma",
+        "Icon": "preferences-system-windows",
+        "Authors": [
+            {
+                "Email": "hi@jaylyn.ch",
+                "Name": "Jay Lynch"
+            }
+        ],
+        "Id": "jaysresizer",
+        "Version": "0.1",
+        "License": "GPLv3",
+        "Website": "https://github.com/jaylynch/dotfiles"
+    },
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js"
+}
