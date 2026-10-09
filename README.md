@@ -21,3 +21,26 @@ TODO
 - Better OSX and zsh detection
 - Sublime Text config
 
+
+macOS keyboard remapping
+------------------------
+
+`macos/LaunchAgents/local.escape-to-backtick.plist` maps the physical Escape key
+to backtick/tilde and Caps Lock to Escape, applying the mappings at login.
+In System Settings → Keyboard → Keyboard Shortcuts → Modifier Keys, leave
+Caps Lock mapped to Caps Lock for each keyboard; the LaunchAgent handles its remap.
+
+Install separately from `install.py`:
+
+```sh
+mkdir -p ~/Library/LaunchAgents
+ln -s ~/dotfiles/macos/LaunchAgents/local.escape-to-backtick.plist ~/Library/LaunchAgents/local.escape-to-backtick.plist
+launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/local.escape-to-backtick.plist
+```
+
+If that LaunchAgent is already loaded, unload it before loading the updated file:
+
+```sh
+launchctl bootout "gui/$(id -u)/local.escape-to-backtick"
+launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/local.escape-to-backtick.plist
+```
