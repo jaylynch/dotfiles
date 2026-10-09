@@ -10,7 +10,7 @@ Currently contains:
 - .bash_profile
 - .gitconfig
 
-Just run install.py in the root to install to home directory, note it's still _incredibly_ naive at this point - it purely runs over every item in src/ and links each from the current user's home directory - so make sure you only run it on a clean installation where these files aren't going to exist.
+Run `python3 install.py` in the root to link items in `src/` into your home directory. Existing files and symlinks are left untouched. On macOS, entries in `src/launchagents/` are linked individually into `~/Library/LaunchAgents/`; this directory is skipped on other systems. The installer creates links only; it does not load LaunchAgents into the current login session.
 
 Thanks to the makers of the color schemes included here! They're duplicated so I know I'm getting the exact version but all are available on vim.org
 
@@ -25,16 +25,15 @@ TODO
 macOS keyboard remapping
 ------------------------
 
-`macos/LaunchAgents/local.escape-to-backtick.plist` maps the physical Escape key
+`src/launchagents/local.escape-to-backtick.plist` maps the physical Escape key
 to backtick/tilde and Caps Lock to Escape, applying the mappings at login.
 In System Settings → Keyboard → Keyboard Shortcuts → Modifier Keys, leave
 Caps Lock mapped to Caps Lock for each keyboard; the LaunchAgent handles its remap.
 
-Install separately from `install.py`:
+Run the installer, then load the agent for the current login session:
 
 ```sh
-mkdir -p ~/Library/LaunchAgents
-ln -s ~/dotfiles/macos/LaunchAgents/local.escape-to-backtick.plist ~/Library/LaunchAgents/local.escape-to-backtick.plist
+python3 install.py
 launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/local.escape-to-backtick.plist
 ```
 
